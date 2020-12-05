@@ -14,7 +14,7 @@ import './index.less'
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: 'Trending',
+    navigationBarTitleText: 'AMS 荣誉激励',
     enablePullDownRefresh: true
   }
 
@@ -60,33 +60,20 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.interstitialAd = null
-    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
-    this.loadLanguages()
-    this.loadItemList()
-    this.loadNotice()
-    this.loadinterstitialAd()
-
-    let that = this
-    Taro.getSystemInfo({
-      success(res) {
-        that.setState({
-          windowHeight: res.windowHeight - (res.windowWidth / 750) * 80
-        })
-      }
+    this.setState({
+      repos: [{
+        author: 'payton',
+        description: 'description',
+        language: 'language',
+        stars: 13,
+        forks: 321
+      }]
     })
   }
 
   componentWillUnmount() { }
 
   componentDidShow() {
-    this.updateLanguages()
-    // 在适合的场景显示插屏广告
-    if (this.interstitialAd) {
-      this.interstitialAd.show().catch((err) => {
-        console.error(err)
-      })
-    }
   }
 
   componentDidHide() { }
@@ -343,6 +330,7 @@ class Index extends Component {
       categoryType = 2
     }
     const { developers, repos, current, notice, fixed, notice_closed } = this.state
+    console.log(repos)
     return (
       <View className='content'>
         <View className={fixed ? 'segment-fixed' : ''}>

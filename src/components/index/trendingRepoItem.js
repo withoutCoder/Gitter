@@ -1,4 +1,3 @@
-import Taro, { Component } from '@tarojs/taro'
 import PropTypes from 'prop-types';
 import { View, Text } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
@@ -6,7 +5,7 @@ import { AtIcon } from 'taro-ui'
 
 import './trendingRepoItem.less'
 
-export default class TrendingRepoItem extends Component {
+export default class TrendingRepoItem extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     categoryType: PropTypes.number
